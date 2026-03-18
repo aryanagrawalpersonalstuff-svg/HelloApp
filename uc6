@@ -1,0 +1,75 @@
+import java.util.HashMap;
+
+/**
+ * OOPSBannerApp - Use Map for Character Patterns and Render via Function
+ * * This use case extends UC7 by utilizing advanced Object-Oriented Programming concepts
+ * such as the Collections Framework to manage character patterns in a more flexible
+ * manner.
+ * * @author Developer
+ * @version 8.0
+ */
+public class OOPSBannerApp {
+
+    /**
+     * Creates a HashMap containing ASCII art patterns for supported characters.
+     * Each character is mapped to an array of strings where each string represents one line.
+     */
+    public static HashMap<Character, String[]> createCharacterMap() {
+        HashMap<Character, String[]> charMap = new HashMap<>();
+
+        charMap.put('O', new String[] {
+            "  *** ",
+            " * * ",
+            " * * ",
+            "  *** "
+        });
+
+        charMap.put('P', new String[] {
+            " **** ",
+            " * * ",
+            " **** ",
+            " * "
+        });
+
+        charMap.put('S', new String[] {
+            "  **** ",
+            " * ",
+            "  *** ",
+            "     * ",
+            " **** "
+        });
+
+        return charMap;
+    }
+
+    /**
+     * Displays a banner message using the provided character map.
+     * Renders horizontally by iterating through each line of the pattern height.
+     */
+    public static void displayBanner(String message, HashMap<Character, String[]> charMap) {
+        // Getting pattern height. Assuming all patterns have the same height (e.g., 5 lines)
+        int patternHeight = charMap.get('O').length;
+
+        // Loop through each line of the pattern height
+        for (int line = 0; line < patternHeight; line++) {
+            StringBuilder bannerLine = new StringBuilder();
+            
+            // For each character in the message, grab the corresponding line from the array
+            for (char c : message.toCharArray()) {
+                if (charMap.containsKey(c)) {
+                    bannerLine.append(charMap.get(c)[line]).append("  ");
+                }
+            }
+            System.out.println(bannerLine.toString());
+        }
+    }
+
+    /**
+     * Main entry point of the application.
+     */
+    public static void main(String[] args) {
+        HashMap<Character, String[]> charMap = createCharacterMap();
+        String message = "OOPS";
+        displayBanner(message, charMap);
+    }
+}
