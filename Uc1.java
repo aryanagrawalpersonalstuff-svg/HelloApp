@@ -1,10 +1,6 @@
 
-
-public class HelloApp {
-
+public class UC1 {
     public static void main(String[] args) {
-        // Get the name from command-line argument
-        String name = args[0];
-        System.out.println("Hello, " + name + "!");
+        System.out.println("Hello, world!");
     }
 }
